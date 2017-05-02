@@ -464,6 +464,7 @@ static inline void mierda_horrible_core(natural num_numeros,
 			caca_log_debug("aciendo consulta");
 			res = bit_ch_consulta_rango(bit_puto, bit_aux, idx_ini, idx_fin);
 			caca_log_debug("resultado %lld", res);
+			printf("%lld\n", res);
 		}
 	}
 }

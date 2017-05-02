@@ -2,22 +2,20 @@
 from random import randint
 
 def gencoordinates(m, n):
-    seen = set()
-
-    x, y = randint(m, n), randint(m, n)
+    x = randint(m, n)
+    y = randint(x, n)
 
     while True:
-        seen.add((x, y))
         yield (x, y)
-        x, y = randint(m, n), randint(m, n)
-        while (x, y) in seen:
-            x, y = randint(m, n), randint(m, n)
+        x = randint(m, n)
+        y = randint(x, n)
 
 if __name__ == "__main__":
     generados=0
     cacas=[]
-    g=gencoordinates(1,10)
-    while (generados<10):
+    g=gencoordinates(1,100000)
+    while (generados<49000):
         cacas.append(next(g))
         generados+=1
-    print(cacas)
+    for (x,y) in cacas:
+        print("%u %u"%(x,y))
