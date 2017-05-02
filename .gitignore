@@ -1,0 +1,12 @@
+
+*.pyc
+
+*.swp
+
+src/mierda_horrible
+
+*.plist
+
+src/mierda_horrible.dSYM/Contents/Resources/DWARF/mierda_horrible
+
+src/shit
