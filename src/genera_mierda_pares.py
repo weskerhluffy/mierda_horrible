@@ -14,7 +14,7 @@ if __name__ == "__main__":
     generados=0
     cacas=[]
     g=gencoordinates(1,100000)
-    while (generados<49000):
+    while (generados<99000):
         cacas.append(next(g))
         generados+=1
     for (x,y) in cacas:
