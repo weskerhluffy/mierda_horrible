@@ -324,7 +324,7 @@ static inline void bit_ch_init(bit_ch *bit, tipo_dato valor_inicial,
 	tipo_dato *nodos = bit->nodos_bit_ch;
 
 	nodos[0] = BIT_CH_VALOR_INVALIDO;
-	for (natural i = 1; i < BIT_CH_MAX_NODOS ; i++) {
+	for (natural i = 1; i < BIT_CH_MAX_NODOS + 2; i++) {
 		nodos[i] = 0;
 	}
 	bit->num_nodos_bit_ch = num_cacas;
@@ -348,6 +348,7 @@ static inline tipo_dato bit_ch_consulta(bit_ch *bit, natural idx) {
 	tipo_dato *nodos = bit->nodos_bit_ch;
 	tipo_dato res = 0;
 	for (int i = idx; i > 0; i -= (i & (-i))) {
+		assert_timeout(i<BIT_CH_MAX_NODOS + 2);
 		caca_log_debug("consultando caca %u tiene %lld", i, nodos[i]);
 		res += nodos[i];
 	}
@@ -479,7 +480,7 @@ static inline void mierda_horrible_main() {
 		natural num_comsultas = 0;
 		scanf("%u %u", &num_numeros, &num_comsultas);
 		caca_comun_lee_matrix_long_stdin((tipo_dato *) consultas, &(int ) { 0 },
-				NULL, 100000, 4);
+				NULL, num_comsultas, 4);
 
 		mierda_horrible_core(num_numeros, (tipo_dato*) consultas,
 				num_comsultas);
